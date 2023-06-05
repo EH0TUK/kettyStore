@@ -1,0 +1,14 @@
+export { default as Footer } from './Footer';
+export { default as Header } from './Header';
+export { default as Main_about } from './Main_about';
+export { default as Main_banner } from './Main_banner';
+export { default as Main_instagram } from './Main_instagram';
+export { default as Main_new_collection } from './Main_new_collection';
+export { default as Layout } from './layout';
+export { default as CollectionsNames } from './CollectionsNames';
+export { default as Model } from './Model';
+export { default as CatalogImg } from './CatalogImg';
+export { default as ModelColor } from './ModelColor';
+export { default as ModelSize } from './ModelSize';
+export { default as ModelLike } from './ModelLike';
+export { default as BasketItem } from './BasketItem';

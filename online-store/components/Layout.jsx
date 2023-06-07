@@ -34,8 +34,7 @@ const Layout = ({ children }) => {
                                 <div className='header__part-1 header__part'>
                                     <div className='header__logo'>
                                         <a href="/">
-                                            <p className='header__logo-max'>KETTY</p>
-                                            <img src='https://www.svgrepo.com/show/482584/dress-4.svg' alt='logo-min' className='header__logo-min' />
+                                            <img src='/logo.jpg' alt='logo-min' className='header__logo-min' />
                                         </a>
                                     </div>
                                 </div>

@@ -6,7 +6,8 @@ import { useStateContext } from "../context/StateContext";
 const Catalog = ({ CollectionsData, ProductData }) => {
     const { search, auth } = useStateContext();
     let check = ``
-    if (ProductData?.map((productData) => productData.name.includes(search)).includes(true))
+    console.log(ProductData)
+    if (ProductData?.map((productData) => productData.name?.includes(search)).includes(true))
         check = ``
     else check = `Ничего не найдено...`
     return (
@@ -14,7 +15,7 @@ const Catalog = ({ CollectionsData, ProductData }) => {
             {CollectionsData?.map((collectionsData) => <CatalogImg key={collectionsData._id} collectionsData={collectionsData} />)}
             <div className="catalog__body">
                 <div div className="catalog__models">
-                    {ProductData?.map((productData) => productData.name.includes(search) && <Model key={productData._id} productData={productData} />)}
+                    {ProductData?.map((productData) => productData.name?.includes(search) && <Model key={productData._id} productData={productData} />)}
                     <div className="catalog__nothing" >
                         {check}
                     </div>

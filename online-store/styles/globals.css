@@ -84,6 +84,15 @@ h1, h2, h3, h4, h5, h6 {
   font-size: inherit;
   font-weight: 400;
 }
+::-webkit-scrollbar {
+  width: 16px;
+}
+::-webkit-scrollbar-thumb {
+  background: #303030;
+}
+::-webkit-scrollbar-track {
+  background: #FDFAF8;
+}
 .wrapper {
   overflow: hidden;
 	flex-direction: column;
@@ -136,6 +145,7 @@ img {
 .header__menu-items {
 	display: flex;
   justify-content:center;
+  align-items: center;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
   font-weight: 500;
@@ -169,14 +179,12 @@ img {
 }
 .header__about {
   display: block;
-  padding: 10px 0px 0px 0px;
 }
 .header__about a {
   padding: 10px;
 }
 .header__coop {
   display: block;
-  padding: 10px 0px 0px 0px;
 }
 .header__coop a {
   padding: 10px;
@@ -195,13 +203,13 @@ img {
   font-size: 30px;
 }
 .header__logo-min {
-  height: 45px;
-  width: 45px;
+  height: 40px;
+/*  width: 45px;*/
 }
 .header__part-3 {
   display: flex;
   justify-content: flex-end;
-  min-width: 200px;
+  min-width: 190px;
 }
 .header__search::before {
   content: "";
@@ -1487,7 +1495,6 @@ img {
     padding: 30px calc(10px + (40 - 10) * ((100vw - 300px) / (1180 - 300))) calc(20px + (50 - 20) * ((100vw - 300px) / (1180 - 300))) calc(10px + (40 - 10) * ((100vw - 300px) / (1180 - 300)));
   }
   .catalog__models, .main__favorite {
-    /*min-width: calc(582.5px + (910 - 582.5) * ((100vw - 768px) / (1180 - 768)));*/
     column-gap: calc(10px + (20 - 10) * ((100vw - 768px) / (1180 - 768)));
   }
   .catalog__categories {
@@ -1583,6 +1590,12 @@ img {
     height: calc(89px + (350 - 89) * ((100vw - 300px) / (1180 - 300)));
     margin: 0px 0px calc(20px + (40 - 20) * ((100vw - 300px) / (1180 - 300))) 0px;
   }
+  .header__collections a, .header__about a, .header__coop a {
+    padding: calc(5px + (10 - 5) * ((100vw - 768px) / (1180 - 768)));
+  }
+  .header__logo-min {
+    height: calc(30px + (40 - 30) * ((100vw - 300px) / (1180 - 300)));
+  }
 }
 @media(max-width: 959.98px) { 
   .about__small-img {
@@ -1590,12 +1603,11 @@ img {
   }
 }
 @media(min-width: 767.98px) {
-  .header__part-1,
-  .header__part-3 {
-    flex: 0 1 15%;
+  .header__part-1 {
+    flex: 0 1 16%;
   }
   .header__part-2 {
-    flex: 0 1 70%;
+    flex: 0 1 72%;
   }
   .header__collections:hover .header__collections-category {
     display: flex;
@@ -1611,11 +1623,11 @@ img {
   .header__logo-max {
     display: none;
   }
-  .header__part-1 {
-    max-width: 45px;
-  }
 }
 @media(max-width: 767.98px) {
+  .header__collections a, .header__about a, .header__coop a {
+    padding: 10px;
+  }
   .header__body {
   }
   .header__part-3 {

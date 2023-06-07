@@ -28,6 +28,8 @@ export const getServerSideProps = async () => {
 
     const ProductQuery = '*[_type == "product"]';
     const ProductData = await client.fetch(ProductQuery);
+
+    console.log(CollectionsData)
     return {
         props: { CollectionsData, ProductData }
     }

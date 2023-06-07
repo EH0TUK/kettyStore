@@ -1,12 +1,9 @@
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
-
 const app = express();
-
 app.use(express.json());
 app.use(cors())
-
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
@@ -22,6 +19,7 @@ app.post("/register", (req, res) => {
     const userPassword = req.body.userPassword;
     const userCountry = req.body.userCountry;
 
+    if (userFullName == '' || userEmail == '' || userPhoneNumber == '' || userUnpOrInn == '' || userPassword == '' || userCountry == '') return
     db.query(
         `SELECT user_email FROM user_info WHERE user_email = ?`,
         [userEmail],
@@ -33,7 +31,6 @@ app.post("/register", (req, res) => {
                     [userFullName, userEmail, userPhoneNumber, userUnpOrInn, userPassword, userCountry],
                 )
                 res.send(result)
-
             } else {
                 res.send({ message: "почта занята" })
             }

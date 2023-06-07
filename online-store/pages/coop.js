@@ -35,7 +35,7 @@ const Coop = () => {
             </div>
             <form className="coop__form" ref={form} onSubmit={sendEmail}>
                 <div className="coop__form-title">
-                    Запрсить оптовые цены
+                    Запросить оптовые цены
                 </div>
                 <input className="block__display__none" type="text" name="coop" value="Сотрудничество"></input>
                 <div className="coop__form-name">

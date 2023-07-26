@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createElement } from "react";
 import { client, urlFor } from '../../lib/client';
 import { ModelColor, ModelSize, ModelLike } from '../../components';
 import { useStateContext } from "../../context/StateContext";
@@ -7,7 +7,7 @@ import ReactImageMagnify from 'react-image-magnify';
 import { toast } from "react-hot-toast";
 
 const Models = ({ CollectionsData, ProductData, ProductsData }) => {
-    const { size, color, onAdd, onAddFavorite, auth, favoriteItems, country } = useStateContext();
+    const { size, color, onAdd, onAddFavorite, auth, favoriteItems, country, SetColor } = useStateContext();
     const [index, setIndex] = useState(0);
     const [isActive, setIsActive] = useState(false);
     let img = ``
@@ -36,13 +36,28 @@ const Models = ({ CollectionsData, ProductData, ProductsData }) => {
         }
         onAdd(ProductData, color, size, 1)
     }
-
+    let order = new Map();
+    order.set(1, 'first')
+    order.set(2, 'second')
+    order.set(3, 'third')
+    order.set(4, 'fourth')
+    order.set(5, 'fifth')
+    const handleClick = event => {
+        let order_now = event.currentTarget.className.split('__')[0];
+        document?.getElementsByClassName(order.get(1))[0]?.style.display = 'none'
+        document?.getElementsByClassName(order.get(2))[0]?.style.display = 'none'
+        document?.getElementsByClassName(order.get(3))[0]?.style.display = 'none'
+        document?.getElementsByClassName(order.get(4))[0]?.style.display = 'none'
+        document?.getElementsByClassName(order.get(5))[0]?.style.display = 'none'
+        document?.getElementsByClassName(order_now)[0]?.style.display = 'flex'
+        SetColor(event.currentTarget.className.split('__')[1])
+    };
     return (
         <div className="main__model__body">
             <div className="main__model">
-                <div className="model__images">
+                <div className="model__images first">
                     <div className="model__images-small">
-                        {ProductData.image?.map((item, i) => (
+                        {ProductData.image.slice(0, 4)?.map((item, i) => (
                             <img
                                 key={i}
                                 src={urlFor(item)}
@@ -50,7 +65,6 @@ const Models = ({ CollectionsData, ProductData, ProductsData }) => {
                                 onMouseEnter={() => setIndex(i)}
                             />
                         ))}
-
                     </div>
                     <div className="model__images-big">
                         <ReactImageMagnify {...{
@@ -61,6 +75,114 @@ const Models = ({ CollectionsData, ProductData, ProductsData }) => {
                             },
                             largeImage: {
                                 src: urlFor(ProductData?.image && ProductData?.image[index]),
+                                width: 840,
+                                height: 1160,
+                            },
+                            enlargedImagePosition: 'over'
+                        }} />
+                    </div>
+                </div>
+                <div className="model__images second">
+                    <div className="model__images-small">
+                        {ProductData.image.slice(4, 8)?.map((item, i) => (
+                            <img
+                                key={i}
+                                src={urlFor(item)}
+                                className={i === index ? 'small-image selected-image' : 'small-image'}
+                                onMouseEnter={() => setIndex(i)}
+                            />
+                        ))}
+                    </div>
+                    <div className="model__images-big">
+                        <ReactImageMagnify {...{
+                            smallImage: {
+                                alt: 'Wristwatch by Ted Baker London',
+                                isFluidWidth: true,
+                                src: ProductData.image.length > 7 ? urlFor(ProductData?.image && ProductData?.image[index + 4]) : '',
+                            },
+                            largeImage: {
+                                src: ProductData.image.length > 7 ? urlFor(ProductData?.image && ProductData?.image[index + 4]) : '',
+                                width: 840,
+                                height: 1160,
+                            },
+                            enlargedImagePosition: 'over'
+                        }} />
+                    </div>
+                </div>
+                <div className="model__images third">
+                    <div className="model__images-small">
+                        {ProductData.image.slice(8, 12)?.map((item, i) => (
+                            <img
+                                key={i}
+                                src={urlFor(item)}
+                                className={i === index ? 'small-image selected-image' : 'small-image'}
+                                onMouseEnter={() => setIndex(i)}
+                            />
+                        ))}
+                    </div>
+                    <div className="model__images-big">
+                        <ReactImageMagnify {...{
+                            smallImage: {
+                                alt: 'Wristwatch by Ted Baker London',
+                                isFluidWidth: true,
+                                src: ProductData.image.length > 11 ? urlFor(ProductData?.image && ProductData?.image[index + 8]) : '',
+                            },
+                            largeImage: {
+                                src: ProductData.image.length > 11 ? urlFor(ProductData?.image && ProductData?.image[index + 8]) : '',
+                                width: 840,
+                                height: 1160,
+                            },
+                            enlargedImagePosition: 'over'
+                        }} />
+                    </div>
+                </div>
+                <div className="model__images fourth">
+                    <div className="model__images-small">
+                        {ProductData.image.slice(12, 16)?.map((item, i) => (
+                            <img
+                                key={i}
+                                src={urlFor(item)}
+                                className={i === index ? 'small-image selected-image' : 'small-image'}
+                                onMouseEnter={() => setIndex(i)}
+                            />
+                        ))}
+                    </div>
+                    <div className="model__images-big">
+                        <ReactImageMagnify {...{
+                            smallImage: {
+                                alt: 'Wristwatch by Ted Baker London',
+                                isFluidWidth: true,
+                                src: ProductData.image.length > 15 ? urlFor(ProductData?.image && ProductData?.image[index + 12]) : '',
+                            },
+                            largeImage: {
+                                src: ProductData.image.length > 15 ? urlFor(ProductData?.image && ProductData?.image[index + 12]) : '',
+                                width: 840,
+                                height: 1160,
+                            },
+                            enlargedImagePosition: 'over'
+                        }} />
+                    </div>
+                </div>
+                <div className="model__images fifth">
+                    <div className="model__images-small">
+                        {ProductData.image.slice(16, 20)?.map((item, i) => (
+                            <img
+                                key={i}
+                                src={urlFor(item)}
+                                className={i === index ? 'small-image selected-image' : 'small-image'}
+                                onMouseEnter={() => setIndex(i)}
+                            />
+                        ))}
+                    </div>
+                    <div className="model__images-big">
+                        <ReactImageMagnify {...{
+                            smallImage: {
+                                alt: 'Wristwatch by Ted Baker London',
+                                isFluidWidth: true,
+                                src: ProductData.image.length > 19 ? urlFor(ProductData?.image && ProductData?.image[index + 16]) : '',
+                            },
+                            largeImage: {
+                                src: ProductData.image.length > 19 ? urlFor(ProductData?.image && ProductData?.image[index + 16]) : '',
                                 width: 840,
                                 height: 1160,
                             },
@@ -79,10 +201,18 @@ const Models = ({ CollectionsData, ProductData, ProductsData }) => {
                         <a href="/authorization">{priceBlock}</a>
                     </div>
                     <div className="model__info-color">
-                        {ProductData.colors?.map((productData) => <ModelColor key={productData._id} productData={productData} />)}
+                        {ProductData.colors?.map((productData, index) =>
+                            <div class="info-color__element">
+                                <input key={ProductData.model.current + '__' + productData} className={order.get(index + 1) + '__' + productData} onClick={handleClick} type="radio" id={productData} name="color" value="color-1" />
+                                <label for={productData}>
+                                    <span style={{ backgroundColor: productData }}>
+                                    </span>
+                                </label>
+                            </div>)}
                     </div>
+
                     <div className="model__info-size">
-                        {ProductData.sizes?.map((productData) => <ModelSize key={productData._id} productData={productData} />)}
+                        {ProductData.sizes?.map((productData) => <ModelSize key={ProductData.model.current + '__' + productData} productData={productData} />)}
                     </div>
                     <div className="model__table-size">
                         <button className="model__button" onClick={close}>таблица размеров</button>
@@ -139,7 +269,6 @@ const Models = ({ CollectionsData, ProductData, ProductsData }) => {
             </div>
         </div>
     )
-
 }
 
 export const getStaticPaths = async () => {

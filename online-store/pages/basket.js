@@ -38,6 +38,7 @@ const Basket = () => {
     } else {
         total_price = `${totalPriceRub}`
     }
+    console.log(cartItems)
     if (auth)
         return (
             <div className="main__basket" ref={cartRef}>

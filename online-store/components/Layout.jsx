@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
                                 <div className='header__part-1 header__part'>
                                     <div className='header__logo'>
                                         <a href="/">
-                                            <img src='/logo.jpg' alt='logo-min' className='header__logo-min' />
+                                            <img src='/logo.png' alt='logo-min' className='header__logo-min' />
                                         </a>
                                     </div>
                                 </div>
